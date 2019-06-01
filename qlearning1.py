@@ -26,8 +26,8 @@ q_table = np.random.uniform(low=-2, high=0, size=(DISCRETE_OS_SIZE + [env.action
 
 
 def get_discrete_state(state):
-    discrete_state = (state - env.observation_space.low) / discrete_os_win_size
-    return tuple(discrete_state.astype(np.int))
+    this_discrete_state = (state - env.observation_space.low) / discrete_os_win_size
+    return tuple(this_discrete_state.astype(np.int))
 
 
 for episode in range(EPISODES):
