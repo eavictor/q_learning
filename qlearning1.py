@@ -40,8 +40,9 @@ for episode in range(EPISODES):
     discrete_state = get_discrete_state(env.reset())
     done = False
     while not done:
+        # decide action (0: left, 1: no move, 2: right)
         if np.random.random() > epsilon:
-            action = np.argmax(q_table[discrete_state])
+            action = np.argmax(q_table[discrete_state])  # np.argmax returns the array's max value's index
         else:
             action = np.random.randint(0, env.action_space.n)
 
@@ -51,7 +52,7 @@ for episode in range(EPISODES):
         if render:
             env.render()
         if not done:
-            max_future_q = np.max(q_table[new_discrete_state])
+            max_future_q = np.max(q_table[new_discrete_state])  # np.max returns array's max value
             current_q = q_table[discrete_state + (action,)]  # get the Q value
 
             # the formula to calculate new Q value
